@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <section class="visor">
+                <div class="memoriaCalculo"></div>
+                <div class="operadores"></div>
+            </section>
+            <section class="controles">
+                <button class="btnClear" onclick="limpar()">Clear</button>
+                <button class="btnDelete" onclick="apagar()">Delete</button>
+            </section>
+            <section class="numeros">
+                <button class="sete" onclick="sete()">7</button>
+                <button class="oito" onclick="oito()">8</button>
+                <button class="nove" onclick="nove()">9</button>
+                <button class="quatro" onclick="quatro()">4</button>
+                <button class="cinco" onclick="cinco()">5</button>
+                <button class="seis" onclick="seis()">6</button>
+                <button class="um" onclick="um()">1</button>
+                <button class="dois" onclick="dois()">2</button>
+                <button class="tres" onclick="tres()">3</button>
+                <button class="ponto" onclick="ponto()">.</button>
+                <button class="zero" onclick="zero()">0</button>
+                <button class="igual" onclick="igual()">=</button>
+            </section>
+            <section class="operacoes">
+                <button class="divisao" onclick="preparaDivisao()">/</button>
+                <button class="multiplicacao" onclick="preparaMultiplicacao()">*</button>
+                <button class="subtracao" onclick="preparaSubtracao()">-</button>
+                <button class="soma" onclick="preparaSoma()">+</button>
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f6f6;
+    color: #222;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    min-height: 500px;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 'visor visor''controles controles''numeros operacoes';
+    justify-content: center;
+    gap: 5px;
+    width: 400px;
+    border: 2px #333 solid;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #aaa;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 120px 17% auto;
+    min-height: 550px;
+}
+
+.numeros {
+    grid-area: numeros;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin-right: 7px;
+    gap: 5px;
+}
+
+.visor {
+    grid-area: visor;
+    padding: 10px 20px;
+    border: 2px #333 solid;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    background-color: #eee;
+    text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.controles {
+    grid-area: controles;
+    display: flex;
+    justify-content: space-between;
+}
+
+.controles button {
+    width: 49%;
+}
+
+.container .controles:first-of-type button {
+    background-color: red;
+}
+
+.operacoes {
+    grid-area: operacoes;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: space-around;
+}
+
+button {
+    padding: 20px;
+    border: 2px #333 solid;
+    border-radius: 5px;
+    background-color: #eee;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a3a3a3;
+}
+
+.memoriaCalculo {
+    min-height: 32px;
+    font-size: 20px;
+}
+
+.operadores{
+    min-height: 64px;
+    font-size: 40px;
+}
+
+.btnClear {
+    background-color: aqua;
+}
+
+.btnDelete {
+    background-color: #f83131;
+}
