@@ -77,8 +77,8 @@ function preparaSoma() {
         b= numeros[2]
         if (sinal == '+') return soma(a,b,'+');
         if (sinal == '-') return subtracao(a,b,'+');
-        if (sinal == '*') return soma(a,b,'+');
-        if (sinal == '/') return soma(a,b,'+');
+        if (sinal == '*') return multiplicacao(a,b,'+');
+        if (sinal == '/') return divisao(a,b,'+');
     }    
 }
 
@@ -107,8 +107,8 @@ function preparaSubtracao() {
         b= numeros[2]
         if (sinal == '+') return soma(a,b,'-');
         if (sinal == '-') return subtracao(a,b,'-');
-        if (sinal == '*') return soma(a,b,'-');
-        if (sinal == '/') return soma(a,b,'-');
+        if (sinal == '*') return multiplicacao(a,b,'-');
+        if (sinal == '/') return divisao(a,b,'-');
     }    
 }
 
@@ -138,7 +138,7 @@ function preparaMultiplicacao() {
         if (sinal == '+') return soma(a,b,'*');
         if (sinal == '-') return subtracao(a,b,'*');
         if (sinal == '*') return multiplicacao(a,b,'*');
-        if (sinal == '/') return soma(a,b,'*');
+        if (sinal == '/') return divisao(a,b,'*');
     }    
 }
 
@@ -164,16 +164,19 @@ function preparaDivisao() {
         numeros = visorOperadores.innerHTML.split(" ")
         a = numeros[0]
         sinal = numeros[1]
-        b= numeros[2]
-        if (sinal == '+') return soma(a,b,'/');
+        b = numeros[2]
+        if (b == 0) return visorOperadores.innerHTML = 'LSD'
+        else{if (sinal == '+') return soma(a,b,'/');
         if (sinal == '-') return subtracao(a,b,'/');
         if (sinal == '*') return multiplicacao(a,b,'/');
-        if (sinal == '/') return divisao(a,b,'/');
+        if (sinal == '/') return divisao(a,b,'/');}
     }    
 }
 
 function divisao(a,b,novoSinal){
-    return visorMemoria.innerHTML = Number(a) / Number(b), visorOperadores.innerHTML = visorMemoria.innerHTML + ' ' + novoSinal + ' '
+    if (b == 0) return visorOperadores.innerHTML = 'LSD'
+    else {    return visorMemoria.innerHTML = Number(a) / Number(b), visorOperadores.innerHTML = visorMemoria.innerHTML + ' ' + novoSinal + ' '}
+
 }
 
 function igual() {
