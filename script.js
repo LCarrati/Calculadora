@@ -86,7 +86,7 @@ function ponto() {
     (visorOperadores.innerHTML.includes('-') === true) ||
     (visorOperadores.innerHTML.includes('*') === true) ||
     (visorOperadores.innerHTML.includes('+') === true)){
-        if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' ') {
+        if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
             return visorOperadores.innerHTML = visorOperadores.innerHTML + '.'
         }
     }
