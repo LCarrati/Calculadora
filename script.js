@@ -98,7 +98,7 @@ function preparaSoma() {
 }
 
 function soma(a,b){
-    resultado = Number(a) + Number(b)
+    resultado = (Number(a) + Number(b)).toFixed(2)
     return visorMemoria.innerHTML = a + '+' + b + '=' + resultado,visorOperadores.innerHTML = resultado
 }
 
@@ -106,7 +106,7 @@ function preparaSubtracao() {
     validaOperacao('-') 
 }
 
-function subtracao(a,b,novoSinal){
+function subtracao(a,b){
     resultado = Number(a) - Number(b)
     return visorMemoria.innerHTML = a + '-' + b + '=' + resultado, visorOperadores.innerHTML = resultado
 }
@@ -115,7 +115,7 @@ function preparaMultiplicacao() {
     validaOperacao('*')
 }
 
-function multiplicacao(a,b,novoSinal){
+function multiplicacao(a,b){
     resultado = Number(a) * Number(b)
     return visorMemoria.innerHTML = a + 'x' + b + '=' + resultado, visorOperadores.innerHTML = resultado
 }
@@ -124,10 +124,10 @@ function preparaDivisao() {
     validaOperacao('/')
 }
 
-function divisao(a,b,novoSinal){
+function divisao(a,b){
     if (b == 0) return visorOperadores.innerHTML = 'L.S.D.'
     else {
-        resultado = Number(a) / Number(b)
+        resultado = Number((Number(a) / Number(b)).toFixed(3))
         return visorMemoria.innerHTML = a + '/' + b + '=' + resultado, visorOperadores.innerHTML = resultado
     }
 
