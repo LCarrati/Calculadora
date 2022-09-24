@@ -9,95 +9,74 @@ function apagar() {
     return visorOperadores.innerHTML = visorOperadores.innerHTML.slice(0,-1)
 }
 
-function sete() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
+function validacaoNumero(numero){
+    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' ' && ((visorOperadores.innerHTML.includes('/') === false) &&
+    (visorOperadores.innerHTML.includes('-') === false) &&
+    (visorOperadores.innerHTML.includes('*') === false) &&
+    (visorOperadores.innerHTML.includes('+') === false))){
         visorOperadores.innerHTML = ''
         visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '7'
+        return visorOperadores.innerHTML = visorOperadores.innerHTML + numero
     } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '7'
+        return visorOperadores.innerHTML = visorOperadores.innerHTML + numero
     }
+}
+
+function validaOperacao(sinal) {
+    // Se não tiver nenhuma opreção em andamento, inicio
+    if ((visorOperadores.innerHTML.includes(' / ') === false) &&
+    (visorOperadores.innerHTML.includes(' - ') === false) &&
+    (visorOperadores.innerHTML.includes(' * ') === false) &&
+    (visorOperadores.innerHTML.includes(' + ') === false)){
+    return visorOperadores.innerHTML = visorOperadores.innerHTML + ' ' + sinal +' '
+}
+// Muda a operação se ja tiver iniciado mas nao concluido
+else if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
+    visorOperadores.innerHTML = visorOperadores.innerHTML.slice(0,-3)
+    return visorOperadores.innerHTML = visorOperadores.innerHTML + ' ' + sinal + ' '
+}
+// Separo os numeros e chamos as operações
+else {
+    numeros = visorOperadores.innerHTML.split(" ")
+    a = numeros[0]
+    sinalAtual = numeros[1]
+    b= numeros[2]
+    if (sinalAtual == '+') return soma(a,b);
+    if (sinalAtual == '-') return subtracao(a,b);
+    if (sinalAtual == '*') return multiplicacao(a,b);
+    if (sinalAtual == '/') return divisao(a,b);
+}   
+}
+
+function sete() {
+    validacaoNumero(7)
 }
 function oito() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '8'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '8'
-    }
+    validacaoNumero(8)
 }
 function nove() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '9'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '9'
-    }
+    validacaoNumero(9)
 }
 function quatro() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '4'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '4'
-    }
+    validacaoNumero(4)
 }
 function cinco() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '5'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '5'
-    }
+    validacaoNumero(5)
 }
 function seis() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '6'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '6'
-    }
+    validacaoNumero(6)
 }
 function um() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '1'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '1'
-    }
+    validacaoNumero(1)
 }
 function dois() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '2'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '2'
-    }
+    validacaoNumero(2)
 }
 function tres() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '3'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '3'
-    }
+    validacaoNumero(3)
 }
 function zero() {
-    if (visorMemoria.innerHTML != '' && visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' '){
-        visorOperadores.innerHTML = ''
-        visorMemoria.innerHTML = ''
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '0'
-    } else {
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + '0'
-    }
+    validacaoNumero(0)
 }
 function ponto() {
     if (visorOperadores.innerHTML.includes('.') === false){
@@ -108,69 +87,23 @@ function ponto() {
     (visorOperadores.innerHTML.includes('*') === true) ||
     (visorOperadores.innerHTML.includes('+') === true)){
         if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) != ' ') {
-            // numeros = visorOperadores.innerHTML.split(" ")
-            // numeros[2] = numeros[2] + '.'
             return visorOperadores.innerHTML = visorOperadores.innerHTML + '.'
-                    
         }
     }
 }
 
+
 function preparaSoma() {
-    // Se não tiver nenhuma opreção em andamento, inicio
-    if ((visorOperadores.innerHTML.includes('/') === false) &&
-        (visorOperadores.innerHTML.includes('-') === false) &&
-        (visorOperadores.innerHTML.includes('*') === false) &&
-        (visorOperadores.innerHTML.includes('+') === false)){
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' + '
-    }
-    // Muda a operação se ja tiver iniciado mas nao concluido
-    else if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
-        visorOperadores.innerHTML = visorOperadores.innerHTML.slice(0,-3)
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' + '
-    }
-    // Separo os numeros e chamos as operações
-    else {
-        numeros = visorOperadores.innerHTML.split(" ")
-        a = numeros[0]
-        sinal = numeros[1]
-        b= numeros[2]
-        if (sinal == '+') return soma(a,b,'+');
-        if (sinal == '-') return subtracao(a,b,'+');
-        if (sinal == '*') return multiplicacao(a,b,'+');
-        if (sinal == '/') return divisao(a,b,'+');
-    }    
+    validaOperacao('+')
 }
 
-function soma(a,b,novoSinal){
+function soma(a,b){
     resultado = Number(a) + Number(b)
     return visorMemoria.innerHTML = a + '+' + b + '=' + resultado,visorOperadores.innerHTML = resultado
 }
 
 function preparaSubtracao() {
-    // Se não tiver nenhuma opreção em andamento, inicio
-    if ((visorOperadores.innerHTML.includes('/') === false) &&
-        (visorOperadores.innerHTML.includes('-') === false) &&
-        (visorOperadores.innerHTML.includes('*') === false) &&
-        (visorOperadores.innerHTML.includes('+') === false)){
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' - '
-    }
-    // Muda a operação se ja tiver iniciado mas nao concluido
-    else if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
-        visorOperadores.innerHTML = visorOperadores.innerHTML.slice(0,-3)
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' - '
-    }
-    // Separo os numeros e chamos as operações
-    else {
-        numeros = visorOperadores.innerHTML.split(" ")
-        a = numeros[0]
-        sinal = numeros[1]
-        b= numeros[2]
-        if (sinal == '+') return soma(a,b,'-');
-        if (sinal == '-') return subtracao(a,b,'-');
-        if (sinal == '*') return multiplicacao(a,b,'-');
-        if (sinal == '/') return divisao(a,b,'-');
-    }    
+    validaOperacao('-') 
 }
 
 function subtracao(a,b,novoSinal){
@@ -179,29 +112,7 @@ function subtracao(a,b,novoSinal){
 }
 
 function preparaMultiplicacao() {
-    // Se não tiver nenhuma opreção em andamento, inicio
-    if ((visorOperadores.innerHTML.includes('/') === false) &&
-        (visorOperadores.innerHTML.includes('-') === false) &&
-        (visorOperadores.innerHTML.includes('*') === false) &&
-        (visorOperadores.innerHTML.includes('+') === false)){
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' * '
-    }
-    // Muda a operação se ja tiver iniciado mas nao concluido
-    else if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
-        visorOperadores.innerHTML = visorOperadores.innerHTML.slice(0,-3)
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' * '
-    }
-    // Separo os numeros e chamos as operações
-    else {
-        numeros = visorOperadores.innerHTML.split(" ")
-        a = numeros[0]
-        sinal = numeros[1]
-        b= numeros[2]
-        if (sinal == '+') return soma(a,b,'*');
-        if (sinal == '-') return subtracao(a,b,'*');
-        if (sinal == '*') return multiplicacao(a,b,'*');
-        if (sinal == '/') return divisao(a,b,'*');
-    }    
+    validaOperacao('*')
 }
 
 function multiplicacao(a,b,novoSinal){
@@ -210,34 +121,11 @@ function multiplicacao(a,b,novoSinal){
 }
 
 function preparaDivisao() {
-    // Se não tiver nenhuma opreção em andamento, inicio
-    if ((visorOperadores.innerHTML.includes('/') === false) &&
-        (visorOperadores.innerHTML.includes('-') === false) &&
-        (visorOperadores.innerHTML.includes('*') === false) &&
-        (visorOperadores.innerHTML.includes('+') === false)){
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' / '
-    }
-    // Muda a operação se ja tiver iniciado mas nao concluido
-    else if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
-        visorOperadores.innerHTML = visorOperadores.innerHTML.slice(0,-3)
-        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' / '
-    }
-    // Separo os numeros e chamos as operações
-    else {
-        numeros = visorOperadores.innerHTML.split(" ")
-        a = numeros[0]
-        sinal = numeros[1]
-        b = numeros[2]
-        if (b == 0) return visorOperadores.innerHTML = 'LSD'
-        else{if (sinal == '+') return soma(a,b,'/');
-        if (sinal == '-') return subtracao(a,b,'/');
-        if (sinal == '*') return multiplicacao(a,b,'/');
-        if (sinal == '/') return divisao(a,b,'/');}
-    }    
+    validaOperacao('/')
 }
 
 function divisao(a,b,novoSinal){
-    if (b == 0) return visorOperadores.innerHTML = 'LSD'
+    if (b == 0) return visorOperadores.innerHTML = 'L.S.D.'
     else {
         resultado = Number(a) / Number(b)
         return visorMemoria.innerHTML = a + '/' + b + '=' + resultado, visorOperadores.innerHTML = resultado
@@ -259,4 +147,34 @@ function igual() {
             if (sinal == '*') return multiplicacao(a,b,'*');
             if (sinal == '/') return divisao(a,b,'/');
     } else {return 1}
+}
+
+
+document.addEventListener('keydown', (e) => {
+    if (e.key == "0") {zero();botaoTeclado('.zero')}
+    else if (e.key == "1") {um();botaoTeclado('.um')}
+    else if (e.key == "2") {dois();botaoTeclado('.dois')}
+    else if (e.key == "3") {tres();botaoTeclado('.tres')}
+    else if (e.key == "4") {quatro();botaoTeclado('.quatro')}
+    else if (e.key == "5") {cinco();botaoTeclado('.cinco')}
+    else if (e.key == "6") {seis();botaoTeclado('.seis')}
+    else if(e.key == "7") {sete();botaoTeclado('.sete')}
+    else if(e.key == "8") {oito();botaoTeclado('.oito')}
+    else if(e.key == "9") {nove();botaoTeclado('.nove')}
+    else if(e.key == "+") {preparaSoma();botaoTeclado('.soma')}
+    else if(e.key == "-") {preparaSubtracao();botaoTeclado('.subtracao')}
+    else if(e.key == "*") {preparaMultiplicacao();botaoTeclado('.multiplicacao')}
+    else if(e.key == "/") {preparaDivisao();botaoTeclado('.divisao')}
+    else if(e.key == "=") {igual();botaoTeclado('.igual')}
+    else if(e.key == "Enter") {igual();botaoTeclado('.igual')}
+    else if(e.key == ".") {ponto();botaoTeclado('.ponto')}
+    else if(e.key == "Delete") {limpar();botaoTeclado('.btnLimpar')}
+    else if(e.key == "Backspace") {apagar();botaoTeclado('.btnCorrigir')}
+});
+
+function botaoTeclado (classe){
+    document.querySelector(classe).classList.add('apertado')
+    setTimeout(function() { 
+        document.querySelector(classe).classList.remove('apertado');
+      }, 120)
 }
