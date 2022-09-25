@@ -29,67 +29,80 @@ function validaOperacao(sinal) {
     (visorOperadores.innerHTML.includes(' * ') === false) &&
     (visorOperadores.innerHTML.includes(' + ') === false)){
     return visorOperadores.innerHTML = visorOperadores.innerHTML + ' ' + sinal +' '
-}
-// Muda a operação se ja tiver iniciado mas nao concluido
-else if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
-    visorOperadores.innerHTML = visorOperadores.innerHTML.slice(0,-3)
-    return visorOperadores.innerHTML = visorOperadores.innerHTML + ' ' + sinal + ' '
-}
-// Separo os numeros e chamos as operações
-else {
-    numeros = visorOperadores.innerHTML.split(" ")
-    a = numeros[0]
-    sinalAtual = numeros[1]
-    b= numeros[2]
-    if (sinalAtual == '+') return soma(a,b);
-    if (sinalAtual == '-') return subtracao(a,b);
-    if (sinalAtual == '*') return multiplicacao(a,b);
-    if (sinalAtual == '/') return divisao(a,b);
-}   
+    }
+    // Muda a operação se ja tiver iniciado mas nao concluido
+    else if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
+        visorOperadores.innerHTML = visorOperadores.innerHTML.slice(0,-3)
+        return visorOperadores.innerHTML = visorOperadores.innerHTML + ' ' + sinal + ' '
+    }
+    // Separo os numeros e chamos as operações
+    else {
+        numeros = visorOperadores.innerHTML.split(" ")
+        a = numeros[0]
+        sinalAtual = numeros[1]
+        b= numeros[2]
+        if (sinalAtual == '+') return soma(a,b);
+        if (sinalAtual == '-') return subtracao(a,b);
+        if (sinalAtual == '*') return multiplicacao(a,b);
+        if (sinalAtual == '/') return divisao(a,b);
+    }   
 }
 
 function sete() {
     validacaoNumero(7)
+    processInput()
 }
 function oito() {
     validacaoNumero(8)
+    processInput()
 }
 function nove() {
     validacaoNumero(9)
+    processInput()
 }
 function quatro() {
     validacaoNumero(4)
+    processInput()
 }
 function cinco() {
     validacaoNumero(5)
+    processInput()
 }
 function seis() {
     validacaoNumero(6)
+    processInput()
 }
 function um() {
     validacaoNumero(1)
+    processInput()
 }
 function dois() {
     validacaoNumero(2)
+    processInput()
 }
 function tres() {
     validacaoNumero(3)
+    processInput()
 }
 function zero() {
     validacaoNumero(0)
+    processInput()
 }
 function ponto() {
-    if (visorOperadores.innerHTML.includes('.') === false){
+    if (visorOperadores.innerHTML.includes('.') === false ){
         return visorOperadores.innerHTML = visorOperadores.innerHTML + '.'
     }
-    else if ((visorOperadores.innerHTML.includes('/') === true) ||
+    else if (visorOperadores.innerHTML.includes('.') === true && ((visorOperadores.innerHTML.includes('/') === true) ||
     (visorOperadores.innerHTML.includes('-') === true) ||
     (visorOperadores.innerHTML.includes('*') === true) ||
-    (visorOperadores.innerHTML.includes('+') === true)){
-        if (visorOperadores.innerHTML.charAt(visorOperadores.innerHTML.length - 1) == ' ') {
+    (visorOperadores.innerHTML.includes('+') === true))){
+        tempo = []
+        tempo = visorOperadores.innerHTML.split(' ')
+        if (tempo[2].includes('.') == false){
             return visorOperadores.innerHTML = visorOperadores.innerHTML + '.'
         }
     }
+    processInput()
 }
 
 
@@ -98,42 +111,48 @@ function preparaSoma() {
 }
 
 function soma(a,b){
-    resultado = (Number(a) + Number(b)).toFixed(2)
-    return visorMemoria.innerHTML = a + '+' + b + '=' + resultado,visorOperadores.innerHTML = resultado
+    resultado = Number((Number(a) + Number(b)).toFixed(3))
+    if (resultado > 1999999998){return visorMemoria.innerHTML = 'ERRO', visorOperadores.innerHTML = 'ERRO - NUM MT GRANDE',processInput()}
+    else {return visorMemoria.innerHTML = a + '+' + b + '=' + resultado,visorOperadores.innerHTML = resultado, processInput()}    
 }
 
 function preparaSubtracao() {
     validaOperacao('-') 
+    processInput()
 }
 
 function subtracao(a,b){
-    resultado = Number(a) - Number(b)
-    return visorMemoria.innerHTML = a + '-' + b + '=' + resultado, visorOperadores.innerHTML = resultado
+    resultado = Number((Number(a) - Number(b)).toFixed(3))
+    if (resultado > 1999999998){return visorMemoria.innerHTML = 'ERRO', visorOperadores.innerHTML = 'ERRO - NUM MT GRANDE',processInput()}
+    else {return visorMemoria.innerHTML = a + '-' + b + '=' + resultado, visorOperadores.innerHTML = resultado, processInput()}
 }
 
 function preparaMultiplicacao() {
     validaOperacao('*')
+    processInput()
 }
 
 function multiplicacao(a,b){
-    resultado = Number(a) * Number(b)
-    return visorMemoria.innerHTML = a + 'x' + b + '=' + resultado, visorOperadores.innerHTML = resultado
+    resultado = Number((Number(a) * Number(b)).toFixed(3))
+    if (resultado > 1999999998){return visorMemoria.innerHTML = 'ERRO', visorOperadores.innerHTML = 'ERRO - NUM MT GRANDE',processInput()}
+    else {return visorMemoria.innerHTML = a + 'x' + b + '=' + resultado, visorOperadores.innerHTML = resultado, processInput()}
 }
 
 function preparaDivisao() {
     validaOperacao('/')
+    processInput()
 }
 
 function divisao(a,b){
     if (b == 0) return visorOperadores.innerHTML = 'L.S.D.'
     else {
         resultado = Number((Number(a) / Number(b)).toFixed(3))
-        return visorMemoria.innerHTML = a + '/' + b + '=' + resultado, visorOperadores.innerHTML = resultado
+        if (resultado > 1999999998){return visorMemoria.innerHTML = 'ERRO', visorOperadores.innerHTML = 'ERRO - NUM MT GRANDE',processInput()}
+        else {return visorMemoria.innerHTML = a + '/' + b + '=' + resultado, visorOperadores.innerHTML = resultado, processInput()}
     }
-
 }
 
-function igual() {
+function igual() {    
     if ((visorOperadores.innerHTML.includes('/') === true) ||
         (visorOperadores.innerHTML.includes('-') === true) ||
         (visorOperadores.innerHTML.includes('*') === true) ||
@@ -166,7 +185,7 @@ document.addEventListener('keydown', (e) => {
     else if(e.key == "*") {preparaMultiplicacao();botaoTeclado('.multiplicacao')}
     else if(e.key == "/") {preparaDivisao();botaoTeclado('.divisao')}
     else if(e.key == "=") {igual();botaoTeclado('.igual')}
-    else if(e.key == "Enter") {igual();botaoTeclado('.igual')}
+    else if(e.key == "Enter") {e.preventDefault(), document.querySelector('.igual').click();botaoTeclado('.igual')}
     else if(e.key == ".") {ponto();botaoTeclado('.ponto')}
     else if(e.key == "Delete") {limpar();botaoTeclado('.btnLimpar')}
     else if(e.key == "Backspace") {apagar();botaoTeclado('.btnCorrigir')}
@@ -178,3 +197,22 @@ function botaoTeclado (classe){
         document.querySelector(classe).classList.remove('apertado');
       }, 120)
 }
+
+function redimensionarTexto() {
+    let fontOperadores = window.getComputedStyle(visorOperadores).fontSize; // Busco o tamnho atual da fonte
+    let fontMemoria = window.getComputedStyle(visorMemoria).fontSize; // Busco o tamnho atual da fonte
+    if(visorOperadores.clientHeight > 64){ // Se a altura do elemento for maior que 64px 
+      visorOperadores.style.fontSize = Number((parseInt(fontOperadores) - 1)) + 'px' // Diminuo 1px do tamanho
+      redimensionarTexto(); //rodar a funcao novamente e reduzir em mais 1px o tamanho - fazer isso até que altura > 64
+    }
+    if(visorMemoria.clientHeight > 32){
+        visorMemoria.style.fontSize = Number((parseInt(fontMemoria) - 1)) + 'px' // Diminuo 1px do tamanho
+        redimensionarTexto();
+  }
+}
+  
+  function processInput() { 
+    visorOperadores.style.fontSize = '61px'; // Tamanho padrão da fonte
+    visorMemoria.style.fontSize = '23px'; // Tamanho padrão da fonte
+    redimensionarTexto();
+  }

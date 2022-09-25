@@ -132,6 +132,25 @@ button:active {
     background-color: #f83131;
 }
 
+.btnCorrigir, .btnLimpar {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+}
+
+.btnCorrigir img {
+    width: 36px;
+    height: 36px;
+}
+
+.btnLimpar img {
+    width: 37px;
+    height: 37px;
+    padding: 2px;
+}
+
 .apertado {
     background-color: crimson;
 }
