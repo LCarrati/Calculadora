@@ -5,7 +5,7 @@ Live preview:
 [Clique aqui para acessar](https://lcarrati.github.io/Calculadora/) 
 
 &nbsp;
-> Recursos em destaque:
+### Recursos em destaque:
 - Operações Matemáticas Básicas: Soma, subtração, multiplicação e divisão são executadas com precisão.
 - Histórico de Cálculo: Mostra no visor a última operação realizada
 - Memória de Cálculo: Armazena o último valor calculado para operações posteriores, permitindo uma experiência mais fluida.
@@ -14,7 +14,7 @@ Live preview:
 - Redimensionamento automático: Quando números muito grandes são digitados, a calculadora realiza um redimensionamento automático para acomodar esses números.
 
 &nbsp;
-> Tecnologias utilizadas:
+### Tecnologias utilizadas:
 - Javascript Vanilla
 - CSS
 - HTML
