@@ -20,7 +20,7 @@ Live preview:
 - HTML
 
 &nbsp;
-Objetivo:
+### Objetivo:
 Meu objetivo com este projeto foi aplicar técnicas avançadas de manipulação do DOM utilizando JavaScript, com o propósito de criar uma calculadora que reproduza fielmente as funcionalidades de uma calculadora real. Isso envolveu o desenvolvimento de funções que executam operações matemáticas e fornecem feedback visual dos resultados, além de identificar erros, como tentativa de divisão por zero ou operações com números excessivamente grandes.
 
 &nbsp;
