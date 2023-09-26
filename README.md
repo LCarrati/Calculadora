@@ -14,13 +14,10 @@ Live preview:
 - Redimensionamento automático: Quando números muito grandes são digitados, a calculadora realiza um redimensionamento automático para acomodar esses números.
 
 &nbsp;
-## Tecnologias utilizadas
-
-> Javascript Vanilla
-
-> CSS
-
-> HTML
+> Tecnologias utilizadas:
+- Javascript Vanilla
+- CSS
+- HTML
 
 &nbsp;
 Objetivo:
