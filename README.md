@@ -10,7 +10,7 @@ Live preview:
 - Histórico de Cálculo: Mostra no visor a última operação realizada
 - Memória de Cálculo: Armazena o último valor calculado para operações posteriores, permitindo uma experiência mais fluida.
 - Interface Intuitiva: Oferece duas maneiras de operar - botões virtuais na tela para interação com o mouse e a capacidade de inserir equações diretamente pelo teclado para eficiência adicional.
-- Código Pura: Construída exclusivamente com JavaScript, HTML e CSS sem dependências externas.
+- Código Puro: Construída exclusivamente com JavaScript, HTML e CSS sem dependências externas.
 - Redimensionamento automático: Quando números muito grandes são digitados, a calculadora realiza um redimensionamento automático para acomodar esses números.
 
 &nbsp;
